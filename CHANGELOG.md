@@ -1,3 +1,3 @@
-## 0.0.1
+##1.0.0
 
-* TODO: Describe initial release.
+* description: "A Flutter package that provides simple and ready stripe payment method."

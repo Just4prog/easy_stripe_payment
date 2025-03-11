@@ -1,5 +1,3 @@
-library easy_stripe_payment;
-
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';

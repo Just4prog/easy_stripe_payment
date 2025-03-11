@@ -2,17 +2,16 @@ name: easy_stripe_payment
 description: "A new Flutter package project."
 version: 1.0.0
 homepage: https://github.com/Just4prog/easy_stripe_payment
-author: Ahmed Alnahhal
 
 environment:
-  sdk: ^3.7.0
+  sdk: ^3.6.0
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_stripe: any
-  dio: any
+  flutter_stripe: ^11.4.0
+  dio: ^5.8.0+1
 
 dev_dependencies:
   flutter_test:
