@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:easy_stripe_payment/easy_stripe_payment.dart';
 
-String publishKey = "your_publishable_key";
-String secretKey = "your_secret_key";
+String publishKey = your_publishable_key;
+String secretKey = your_secret_key;
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();

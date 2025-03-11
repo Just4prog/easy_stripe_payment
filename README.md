@@ -1,7 +1,7 @@
 
 # 📦 Easy Stripe Payment
 
-**Easy Stripe Payment** is a simple Flutter library to handle payments using **Stripe** easily and quickly, without complex setup. This library provides a flexible way to create **Payment Intents** and present a **Payment Sheet** directly.
+**Easy Stripe Payment** is a simple Flutter library to handle payments using **Stripe** easily and quickly, without complex setup. This library provides a flexible way to create **Payment Intents** and present a **Payment Sheet** directly . you just have to active payment method in your stripe dashboard from [here](https://dashboard.stripe.com/test/settings/payment_methods) and here you are every think will be perfect >> 
 
 ## 🚀 Features
 
@@ -12,6 +12,7 @@
 ✅ Uses **Dio** for API request handling  
 ✅ Compatible with the latest versions of **Flutter & Stripe**
 ✅ Everything automatically
+
 ---
 ## 🔧 Requirements
 
@@ -20,11 +21,10 @@ This plugin requires several changes to work on Android devices. Please make sur
 
 - Use Android 5.0 (API level 21) and above.
 - Use Kotlin version 1.8.0 and above
-- Requires Android Gradle plugin 8 and higher: [Link](https://developer.android.com/studio/releases/gradle-plugin)
-- Use a descendant of `Theme.AppCompat` for your activity: [Link](https://developer.android.com/reference/androidx/appcompat/R.styleable#AppCompatTheme)
-- Use up-to-date Android gradle build tools version: [Link](https://developer.android.com/studio/releases/gradle) and an up-to-date gradle version accordingly: [Link](https://docs.gradle.org/current/userguide/installation.html)
-- Use `FlutterFragmentActivity` instead of `FlutterActivity` in `MainActivity.kt`: [Link](https://docs.flutter.dev/release/notes/3.7.0#android)
-- Add the following rules to your `proguard-rules.pro` file:
+- Requires Android Gradle plugin 8 and higher: [Link](https://github.com/Just4prog/easy_stripe_payment/blob/master/example/android/settings.gradle.kts#L21)
+- Use a descendant of `Theme.AppCompat` for your activity: [Link](https://github.com/Just4prog/easy_stripe_payment/blob/master/example/android/app/src/main/res/values/styles.xml#L15) , [Link](https://github.com/Just4prog/easy_stripe_payment/blob/master/example/android/app/src/main/res/values-night/styles.xml#L15)
+- Use `FlutterFragmentActivity` instead of `FlutterActivity` in `MainActivity.kt`: [Link](https://github.com/Just4prog/easy_stripe_payment/blob/master/example/android/app/src/main/kotlin/com/example/example/MainActivity.kt#L3-L7)
+- Add the following rules to your `proguard-rules.pro` file:[link](https://github.com/Just4prog/easy_stripe_payment/blob/master/example/android/app/proguard-rules.pro#L1-L5)
   ```plaintext
   -dontwarn com.stripe.android.pushProvisioning.PushProvisioningActivity$g
   -dontwarn com.stripe.android.pushProvisioning.PushProvisioningActivityStarter$Args
@@ -32,17 +32,8 @@ This plugin requires several changes to work on Android devices. Please make sur
   -dontwarn com.stripe.android.pushProvisioning.PushProvisioningActivityStarter
   -dontwarn com.stripe.android.pushProvisioning.PushProvisioningEphemeralKeyProvider
   ```
-- Add the following line to your `gradle.properties` file:
-  ```plaintext
-  android.enableR8.fullMode=false
-  ```
-  This will prevent crashes with the Stripe SDK on Android (see [issue](https://github.com/stripe/stripe-android/issues/1522)).
+- Add the following line to your `gradle.properties` file: [link](https://github.com/Just4prog/easy_stripe_payment/blob/master/example/android/gradle.properties#L1-L4)
 
-- Rebuild the app, as the above changes don't update with hot reload.
-
-These changes are necessary because the Android Stripe SDK requires the use of the AppCompat theme for their UI components and the Support Fragment Manager for the Payment Sheets.
-
-If you face any trouble making this package work on Android, join [this discussion](https://github.com/YOUR_USERNAME/easy_stripe_payment/issues) for support.
 
 ### iOS
 Compatible with apps targeting iOS 13 or above.
@@ -70,9 +61,7 @@ For card scanning, add the following to your `Info.plist`:
 Add the package to `pubspec.yaml`:
 ```yaml
 dependencies:
-  easy_stripe_payment:
-    git:
-      url: https://github.com/YOUR_USERNAME/easy_stripe_payment.git
+  easy_stripe_payment: ^1.0.0
 ```
 Then run:
 ```sh
@@ -86,9 +75,11 @@ flutter pub get
 Before using the library, initialize it with your **Stripe Secret Key**:
 ```dart
 import 'package:easy_stripe_payment/easy_stripe_payment.dart';
+String publishKey = your_publishable_key;
+String secretKey = your_secret_key;
 
 void main() {
-  EasyStripePayment.instance.init(secretKey: "sk_test_YourSecretKey");
+  await EasyStripePayment.instance.init(secretKey: secretKey, publishKey: publishKey);
 }
 ```
 
@@ -101,50 +92,11 @@ void main() {
 ### 🛒 Execute Payment
 
 ```dart
-await EasyStripePayment.instance.makePayment(amount: 5000, currency: "usd");
+await EasyStripePayment.instance.makePayment(amount: your_amount, currency: your_currency);
 ```
-📌 **Amount is in cents** (5000 = 50.00 USD)
-
-### 🛠️ Full Example
-
-```dart
-import 'package:flutter/material.dart';
-import 'package:easy_stripe_payment/easy_stripe_payment.dart';
-
-void main() {
-  EasyStripePayment.instance.init(secretKey: "sk_test_YourSecretKey");
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text("Easy Stripe Payment Example")),
-        body: Center(
-          child: ElevatedButton(
-            onPressed: () async {
-              await EasyStripePayment.instance.makePayment(amount: 5000, currency: "usd");
-            },
-            child: Text("Pay Now"),
-          ),
-        ),
-      ),
-    );
-  }
-}
-```
+📌 **Amount is simple** (50.00 USD = 50.00 USD , 50.00 EUR = 50.00 EUR etc..)
 
 ---
-
-## ❓ Frequently Asked Questions
-
-### 🔹 Does the package support **3D Secure & SCA**?
-Yes ✅, **3D Secure** and **Strong Customer Authentication (SCA)** are automatically supported.
-
-### 🔹 Can I customize the **Payment Sheet**?
-Currently, you can customize the **merchantDisplayName**, and we will work on adding more customizations later.
 
 ### 🔹 What should I do if I encounter an error?
 - Ensure you are using the correct **Stripe Secret Key**.
