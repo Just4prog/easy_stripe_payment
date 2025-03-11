@@ -7,8 +7,11 @@ dashboard from [here](https://dashboard.stripe.com/test/settings/payment_methods
 every think will be perfect >>
 ## Demo Video 1
 
+https://github.com/user-attachments/assets/36f2ac2e-45bf-456f-afe8-02ad3b4ba31b
 
-https://github.com/user-attachments/assets/36f2ac2e-45bf-456f-afe8-02ad3b4ba31b https://github.com/user-attachments/assets/05889cf7-d6c3-490c-8305-fa60407ee38f
+## Demo Video 1
+
+https://github.com/user-attachments/assets/05889cf7-d6c3-490c-8305-fa60407ee38f
 
 ## 🚀 Features
 
