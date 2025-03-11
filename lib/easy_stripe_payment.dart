@@ -9,13 +9,13 @@ class EasyStripePayment {
   String? _secretKey;
   String? companyName = "Just4Prog";
 
-  Future<void> init({required String secretKey , required String publishKey , String ? companyName}) async{
+  Future<void> init({required String secretKey , required String publishKey}) async{
     Stripe.publishableKey = publishKey ;
     await Stripe.instance.applySettings();
     _secretKey = secretKey;
   }
 
-  Future<void> makePayment({required int amount, String currency = "usd"}) async {
+  Future<void> makePayment({required double amount, String currency = "usd" ,String ? companyName }) async {
     try {
       if (_secretKey == null) {
         throw Exception("Stripe Secret Key is not initialized. Call init() first.");
@@ -40,7 +40,7 @@ class EasyStripePayment {
     );
   }
 
-  Future<String?> _createPaymentIntent({required int amount, String currency = "usd"}) async {
+  Future<String?> _createPaymentIntent({required double amount, String currency = "usd"}) async {
     try {
       final Dio dio = Dio();
       Map<String, dynamic> data = {
