@@ -61,10 +61,10 @@ platform :ios, '13.0'
 For card scanning, add the following to your `Info.plist`:
 
 ```xml
-
-<key>NSCameraUsageDescription</key><string>Scan your card to add it automatically</string><key>
-NSCameraUsageDescription
-</key><string>To scan cards</string>
+<key>NSCameraUsageDescription</key>
+<string>Scan your card to add it automatically</string>
+<key>NSCameraUsageDescription</key>
+<string>To scan cards</string>
 ```
 
 ---
