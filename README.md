@@ -7,17 +7,8 @@ dashboard from [here](https://dashboard.stripe.com/test/settings/payment_methods
 every think will be perfect >>
 ## Demo Video 1
 
-<video width="320" height="240" controls>
-  <source src="https://drive.usercontent.google.com/download?id=1PnQTL0IcA8Q3beLGLRBkVZr8A5wc5OMJ&export=download&authuser=0&confirm=t&uuid=e7866559-633c-4e1c-9f38-8baa7876e57a&at=AEz70l49HBVCzBqwc_SBstAqdL8w:1741732376814" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
 
-## Demo Video 2
-
-<video width="320" height="240" controls>
-  <source src="https://drive.usercontent.google.com/download?id=1LmtW2j7jd4Xau4XvbeyF_qxWpxg0IOZ2&export=download&authuser=0&confirm=t&uuid=dad9bb07-4f9b-4512-819c-ca1e50dd48b5&at=AEz70l5I8zwcWmmu9ceS7fHOWdaU:1741732447303" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+https://github.com/user-attachments/assets/36f2ac2e-45bf-456f-afe8-02ad3b4ba31b https://github.com/user-attachments/assets/05889cf7-d6c3-490c-8305-fa60407ee38f
 
 ## 🚀 Features
 
