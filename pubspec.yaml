@@ -1,5 +1,5 @@
 name: easy_stripe_payment
-description: "A new Flutter package project."
+description: "A Flutter package that provides simple and ready stripe payment method."
 version: 1.0.0
 homepage: https://github.com/Just4prog/easy_stripe_payment
 
