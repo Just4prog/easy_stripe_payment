@@ -82,7 +82,7 @@ Add the package to `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  easy_stripe_payment: ^1.0.0
+  easy_stripe_payment: ^2.0.1
 ```
 
 Then run:
