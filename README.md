@@ -114,11 +114,11 @@ void main() async {
   runApp(const MyApp());
 }
 ```
-**IMPORTANT NOTE**
+**IMPORTANT NOTE**␣␣  
+⚠️⚠️⚠️⚠️␣␣  
+⚠️ **Security Warning**: Do not expose your **Stripe Secret Key** in the frontend, use a **secure server** to fetch it.␣␣  
 ⚠️⚠️⚠️⚠️
-⚠️ **Security Warning**: Do not expose your **Stripe Secret Key** in the frontend, use a **secure
-server** to fetch it.
-⚠️⚠️⚠️⚠️
+
 
 ---
 
