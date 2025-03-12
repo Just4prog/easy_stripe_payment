@@ -1,6 +1,6 @@
 name: easy_stripe_payment
 description: "A Flutter package that provides simple and ready stripe payment method."
-version: 2.0.1
+version: 3.0.0
 homepage: https://github.com/Just4prog/easy_stripe_payment
 
 environment:
@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   flutter_stripe: ^11.4.0
   dio: ^5.8.0+1
+  dartz: ^0.10.1
 
 dev_dependencies:
   flutter_test:

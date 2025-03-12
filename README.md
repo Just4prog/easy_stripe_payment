@@ -22,6 +22,9 @@ https://github.com/user-attachments/assets/05889cf7-d6c3-490c-8305-fa60407ee38f
 ✅ Uses **Dio** for API request handling  
 ✅ Compatible with the latest versions of **Flutter & Stripe**
 ✅ Everything automatically
+✅ Returns Final Result using Either from [dartz](https://pub.dev/packages/dartz):
+    ✅ Right → Payment Success 🎉
+    ❌ Left → Payment Failed (Error Message) ⚠️
 
 ---
 
@@ -82,7 +85,7 @@ Add the package to `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  easy_stripe_payment: ^2.0.1
+  easy_stripe_payment: ^2.0.3
 ```
 
 Then run:
@@ -129,10 +132,46 @@ server** to fetch it.
 ### 🛒 Execute Payment
 
 ```dart
+//you can leave it like this  
 await EasyStripePayment.instance.makePayment(amount : your_amount , currency: your_currency);
+// or use it like in the example 
+await EasyStripePayment.instance.makePayment(amount : your_amount , currency: your_currency).then((value){
+    value.fold(
+    (fail){
+        //TODO: DO SOMETHING
+      print("payment fail $fail");
+    },(success){
+        //TODO: DO SOMETHING
+      print("payment success");
+    }
+  );
+});
+
+// or consider it like variable
+paymentResult =  await EasyStripePayment.instance.makePayment(amount : your_amount , currency: your_currency);
+paymentResult.fold(
+    (fail){
+          //TODO: DO SOMETHING
+        print("payment fail $fail");
+        },(success){
+          //TODO: DO SOMETHING
+        print("payment success");
+      }
+    );
+
 ```
 
 📌 **Amount is simple** (50.00 USD = 50.00 USD , 50.00 EUR = 50.00 EUR etc..)
+---
+## ☕ Support My Work
+
+If you find **Easy Stripe Payment** useful and would like to support my work, consider buying me a coffee!
+
+A small cup of coffee might not mean much to you, but for me, it means a lot—it fuels my passion and helps me continue building and improving tools for the Flutter community. 🚀
+
+👉 [Buy me a cup of coffee](https://buymeacoffee.com/just4prog)
+
+Your support keeps me motivated to provide more content, updates, and helpful tools. Thank you for being awesome! ❤️
 
 ---
 
