@@ -7,10 +7,11 @@ dashboard from [here](https://dashboard.stripe.com/test/settings/payment_methods
 every think will be perfect >>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/dc22e4c1-613a-411e-92c4-c941496d099b" alt="Demo Vid" height="750">
-</p><p align="center">
-  <img src="https://github.com/user-attachments/assets/5d44d167-ed15-4bef-bc2e-060ec3369170" alt="Demo Vid" height="750">
+  <img src="https://github.com/user-attachments/assets/dc22e4c1-613a-411e-92c4-c941496d099b" alt="Demo Vid" height="350" style="display:inline-block; margin-right: 10px;">
+  <img src="https://github.com/user-attachments/assets/5d44d167-ed15-4bef-bc2e-060ec3369170" alt="Demo Vid" height="350" style="display:inline-block;">
 </p>
+
+
 ## 🚀 Features
 
 ✅ Easy and fast setup with `init(secretKey , publishkey)`  
