@@ -5,10 +5,8 @@ quickly, without complex setup. This library provides a flexible way to create *
 and present a **Payment Sheet** directly . you just have to active payment method in your stripe
 dashboard from [here](https://dashboard.stripe.com/test/settings/payment_methods) and here you are
 every think will be perfect >>
-## Demo Video 1                 ## Demo Video 2
+
 ![Demo Video 1](https://github.com/user-attachments/assets/dc22e4c1-613a-411e-92c4-c941496d099b)![Demo Video 2](https://github.com/user-attachments/assets/5d44d167-ed15-4bef-bc2e-060ec3369170)
-
-
 
 ## 🚀 Features
 
