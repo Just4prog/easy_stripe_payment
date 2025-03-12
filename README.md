@@ -169,7 +169,8 @@ If you find **Easy Stripe Payment** useful and would like to support my work, co
 
 A small cup of coffee might not mean much to you, but for me, it means a lot—it fuels my passion and helps me continue building and improving tools for the Flutter community. 🚀
 
-👉 [Buy me a cup of coffee](https://buymeacoffee.com/just4prog)
+👉 [Buy me a cup of coffee](https://buymeacoffee.com/just4prog)![qr_code](https://github.com/user-attachments/assets/a4c7373d-4f03-4c7c-98de-bce616eae8ed)
+
 
 Your support keeps me motivated to provide more content, updates, and helpful tools. Thank you for being awesome! ❤️
 
