@@ -5,13 +5,8 @@ quickly, without complex setup. This library provides a flexible way to create *
 and present a **Payment Sheet** directly . you just have to active payment method in your stripe
 dashboard from [here](https://dashboard.stripe.com/test/settings/payment_methods) and here you are
 every think will be perfect >>
-## Demo Video 1
 
-https://github.com/user-attachments/assets/36f2ac2e-45bf-456f-afe8-02ad3b4ba31b
-
-## Demo Video 1
-
-https://github.com/user-attachments/assets/05889cf7-d6c3-490c-8305-fa60407ee38f
+![Demo Video 1](https://github.com/user-attachments/assets/dc22e4c1-613a-411e-92c4-c941496d099b)![Demo Video 2](https://github.com/user-attachments/assets/5d44d167-ed15-4bef-bc2e-060ec3369170)
 
 ## 🚀 Features
 
@@ -23,8 +18,8 @@ https://github.com/user-attachments/assets/05889cf7-d6c3-490c-8305-fa60407ee38f
 ✅ Compatible with the latest versions of **Flutter & Stripe**
 ✅ Everything automatically
 ✅ Returns Final Result using Either from [dartz](https://pub.dev/packages/dartz):
-    ✅ Right → Payment Success 🎉
-    ❌ Left → Payment Failed (Error Message) ⚠️
+✅ Right → Payment Success 🎉
+❌ Left → Payment Failed (Error Message) ⚠️
 
 ---
 
@@ -85,7 +80,7 @@ Add the package to `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  easy_stripe_payment: ^2.0.3
+  easy_stripe_payment: ^3.0.0
 ```
 
 Then run:
@@ -119,11 +114,11 @@ void main() async {
   runApp(const MyApp());
 }
 ```
-**IMPORTANT NOTE**
+**IMPORTANT NOTE**␣␣  
+⚠️⚠️⚠️⚠️␣␣  
+⚠️ **Security Warning**: Do not expose your **Stripe Secret Key** in the frontend, use a **secure server** to fetch it.␣␣  
 ⚠️⚠️⚠️⚠️
-⚠️ **Security Warning**: Do not expose your **Stripe Secret Key** in the frontend, use a **secure
-server** to fetch it.
-⚠️⚠️⚠️⚠️
+
 
 ---
 
@@ -169,10 +164,13 @@ If you find **Easy Stripe Payment** useful and would like to support my work, co
 
 A small cup of coffee might not mean much to you, but for me, it means a lot—it fuels my passion and helps me continue building and improving tools for the Flutter community. 🚀
 
-👉 [Buy me a cup of coffee](https://buymeacoffee.com/just4prog)
+👉 [Buy me a coffee](https://buymeacoffee.com/just4prog)
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/a4c7373d-4f03-4c7c-98de-bce616eae8ed" alt="QR Code" width="200">
+</p>
 
 Your support keeps me motivated to provide more content, updates, and helpful tools. Thank you for being awesome! ❤️
-
 ---
 
 ## 📜 License
