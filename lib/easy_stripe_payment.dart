@@ -44,7 +44,7 @@ class EasyStripePayment {
     try {
       final Dio dio = Dio();
       Map<String, dynamic> data = {
-        "amount": (amount * 100).toString(),
+        "amount": (amount * 100).toInt().toString(),
         "currency": currency,
       };
 
