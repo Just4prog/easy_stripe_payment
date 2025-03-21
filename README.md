@@ -92,7 +92,7 @@ flutter pub add easy_stripe_payment
 or :
 ```yaml
 dependencies:
-  easy_stripe_payment: ^3.0.6
+  easy_stripe_payment: ^3.0.7
 ```
 
 Then run:
