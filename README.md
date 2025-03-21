@@ -16,7 +16,7 @@ every think will be perfect >>
 ## 🚀 Features
 
 ✅ Easy and fast setup with `init(secretKey , publishkey)`  
-✅ Easily create **Payment Intent**
+✅ Easily create **Payment Intent**  
 ✅ Open **Payment Sheet** to complete the payment  
 ✅ Multi-currency support  
 ✅ Uses **Dio** for API request handling  
