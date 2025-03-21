@@ -23,7 +23,7 @@ every think will be perfect >>
 ✅ Compatible with the latest versions of **Flutter & Stripe**  
 ✅ Everything automatically  
 ✅ Returns Final Result using Either from [dartz](https://pub.dev/packages/dartz):  
-✅ Right → Payment Success 🎉  **or** ❌ Left → Payment Failed (Error Message) ⚠️
+✅ Right → Payment Success 🎉  **or** ❌ Left → Payment Failed (Error Message) ⚠️  
 ✅ Supports **Refund Payments**  
 
 ---
