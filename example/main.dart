@@ -6,8 +6,10 @@ String secretKey = your_secret_key;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await EasyStripePayment.instance
-      .init(secretKey: secretKey, publishKey: publishKey);
+  await EasyStripePayment.instance.init(
+    secretKey: secretKey,
+    publishKey: publishKey,
+  );
   runApp(MyApp());
 }
 
@@ -35,35 +37,40 @@ class _MyAppState extends State<MyApp> {
                   // sent your data and simply will get the result true or issue
                   await EasyStripePayment.instance
                       .makePayment(
-                          amount: 50,
-                          currency: "eur",
-                          description: "my description",
-                          clientEmail: "ahmad@just4prog.co")
+                        amount: 50,
+                        currency: "eur",
+                        description: "my description",
+                        clientEmail: "ahmad@just4prog.co",
+                      )
                       .then((value) {
-                    value.fold((fail) {
-                      //TODO: DO SOMETHING
-                    }, (success) {
-                      //TODO: DO SOMETHING
-                      //you can see all info here by get [success.data]
-                      //like payment receipt
-                      //example :
-                      // await launchUrl(Uri.parse(response.data["receipt_url"]));
-                      //you can get your ["latest_charge"]
-                      //success.data["latest_charge"]
-                      //to use it later for refund
-                      setState(() {
-                        latestCharge = success.data["latest_charge"];
+                        value.fold(
+                          (fail) {
+                            //TODO: DO SOMETHING
+                          },
+                          (success) {
+                            //TODO: DO SOMETHING
+                            //you can see all info here by get [success.data]
+                            //like payment receipt
+                            //example :
+                            // await launchUrl(Uri.parse(response.data["receipt_url"]));
+                            //you can get your ["latest_charge"]
+                            //success.data["latest_charge"]
+                            //to use it later for refund
+                            setState(() {
+                              latestCharge = success.data["latest_charge"];
+                            });
+                          },
+                        );
                       });
-                    });
-                  });
                 },
                 child: Text("Pay Now"),
               ),
               ElevatedButton(
                 onPressed: () async {
                   //to refund
-                  EasyStripePayment.instance
-                      .refundPayment(latestCharge: latestCharge);
+                  EasyStripePayment.instance.refundPayment(
+                    latestCharge: latestCharge,
+                  );
                 },
                 child: Text("refund Now"),
               ),
