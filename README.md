@@ -92,7 +92,7 @@ flutter pub add easy_stripe_payment
 or :
 ```yaml
 dependencies:
-  easy_stripe_payment: ^3.0.7
+  easy_stripe_payment: ^3.0.8
 ```
 
 Then run:
@@ -174,7 +174,32 @@ paymentResult.fold(
 📌 **Amount is simple** (50.00 USD = 50.00 USD , 50.00 EUR = 50.00 EUR etc..)
 
 ### 🔄 Refund Payment
-
+## 1- get the payment charge id 
+   Sends a request to the Stripe API to refund a specific charge.  
+   You must send the [latest_charge] which you can find in the response of [makePayment].  
+## Example usage:
+ ```dart
+   final response = EasyStripePayment.instance.makePayment(
+     amount: 30,
+     currency: "eur",
+     description: "my description",
+     clientEmail: "ahmed@just4prog.com",
+   );
+  
+   response.fold(
+     (fail) {
+       // TODO: Handle failure
+     },
+     (response) async {
+       // TODO: Handle success
+       String latestCharge = response.data["latest_charge"];
+       // Create your refund
+       await refundPayment(latestCharge: latestCharge);
+     },
+   );
+  
+```
+## 2- make refund :  
 ```dart
 await EasyStripePayment.instance.refundPayment(latestCharge: "your_charge_id").then((value) {
   value.fold(

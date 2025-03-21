@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:easy_stripe_payment/easy_stripe_payment.dart';
+import 'package:flutter/material.dart';
 
 String publishKey = your_publishable_key;
 String secretKey = your_secret_key;
@@ -19,8 +19,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   String latestCharge = '';
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -34,7 +34,11 @@ class _MyAppState extends State<MyApp> {
                   //call the EasyStripePayment and create instance
                   // sent your data and simply will get the result true or issue
                   await EasyStripePayment.instance
-                      .makePayment(amount: 50, currency: "eur" ,description: "my description" , clientEmail: "ahmad@just4prog.co")
+                      .makePayment(
+                          amount: 50,
+                          currency: "eur",
+                          description: "my description",
+                          clientEmail: "ahmad@just4prog.co")
                       .then((value) {
                     value.fold((fail) {
                       //TODO: DO SOMETHING
@@ -50,7 +54,7 @@ class _MyAppState extends State<MyApp> {
                       setState(() {
                         latestCharge = success.data["latest_charge"];
                       });
-                  });
+                    });
                   });
                 },
                 child: Text("Pay Now"),
@@ -58,7 +62,8 @@ class _MyAppState extends State<MyApp> {
               ElevatedButton(
                 onPressed: () async {
                   //to refund
-                  EasyStripePayment.instance.refundPayment(latestCharge: latestCharge);
+                  EasyStripePayment.instance
+                      .refundPayment(latestCharge: latestCharge);
                 },
                 child: Text("refund Now"),
               ),

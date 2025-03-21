@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 
 /// A singleton class for handling Stripe payments in Flutter apps.
@@ -89,9 +88,12 @@ class EasyStripePayment {
   }) async {
     await Stripe.instance.initPaymentSheet(
       paymentSheetParameters: SetupPaymentSheetParameters(
-        billingDetails: BillingDetails(email: clientEmail), // Customer email
-        paymentIntentClientSecret: paymentIntentClientSecret, // Client secret for Stripe
-        merchantDisplayName: companyName ?? "Just4Prog", // Display merchant name in the payment sheet
+        billingDetails: BillingDetails(email: clientEmail),
+        // Customer email
+        paymentIntentClientSecret: paymentIntentClientSecret,
+        // Client secret for Stripe
+        merchantDisplayName: companyName ??
+            "Just4Prog", // Display merchant name in the payment sheet
       ),
     );
   }
@@ -115,7 +117,8 @@ class EasyStripePayment {
         options: Options(
           contentType: Headers.formUrlEncodedContentType,
           headers: {
-            "Authorization": "Bearer $_secretKey", // Provide the secret key in the authorization header
+            "Authorization": "Bearer $_secretKey",
+            // Provide the secret key in the authorization header
             "Content-Type": "application/x-www-form-urlencoded",
           },
         ),
@@ -165,7 +168,8 @@ class EasyStripePayment {
         options: Options(
           contentType: Headers.formUrlEncodedContentType,
           headers: {
-            "Authorization": "Bearer $_secretKey", // Provide the secret key for authorization
+            "Authorization": "Bearer $_secretKey",
+            // Provide the secret key for authorization
             "Content-Type": "application/x-www-form-urlencoded",
           },
         ),
@@ -182,15 +186,16 @@ class EasyStripePayment {
   /// Processes the payment by checking the payment intent's status.
   /// Returns the final response containing charge details after a successful payment.
   Future<Either<String, Response<dynamic>>> _processPayment(
-      String paymentIntentId,
-      ) async {
+    String paymentIntentId,
+  ) async {
     try {
       // Send a GET request to Stripe to retrieve the payment intent details.
       final response = await dio.get(
         "https://api.stripe.com/v1/payment_intents/$paymentIntentId",
         options: Options(
           headers: {
-            "Authorization": "Bearer $_secretKey", // Provide the secret key for authorization
+            "Authorization": "Bearer $_secretKey",
+            // Provide the secret key for authorization
           },
         ),
       );
@@ -209,10 +214,12 @@ class EasyStripePayment {
   /// Retrieves the final charge details after a successful payment.
   Future<Response<dynamic>> _getFinalResponse(String latestCharge) async {
     return await dio.get(
-      "https://api.stripe.com/v1/charges/$latestCharge", // Retrieve charge details from Stripe
+      "https://api.stripe.com/v1/charges/$latestCharge",
+      // Retrieve charge details from Stripe
       options: Options(
         headers: {
-          "Authorization": "Bearer $_secretKey", // Provide the secret key for authorization
+          "Authorization": "Bearer $_secretKey",
+          // Provide the secret key for authorization
           "Content-Type": "application/x-www-form-urlencoded",
         },
       ),
