@@ -127,7 +127,7 @@ void main() async {
   runApp(const MyApp());
 }
 ```
-**⚠️⚠️⚠️⚠️**
+**⚠️⚠️⚠️⚠️**  
 **IMPORTANT NOTE**  
 ⚠️ **Security Warning**: ⚠️  
 Do not expose your **Stripe Secret Key** in the frontend,  
