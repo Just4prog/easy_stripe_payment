@@ -7,23 +7,24 @@ dashboard from [here](https://dashboard.stripe.com/test/settings/payment_methods
 every think will be perfect >>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/dc22e4c1-613a-411e-92c4-c941496d099b" alt="Demo Vid" height="300" style="display:inline-block; margin-right: 10px;">
-  <img src="https://github.com/user-attachments/assets/5d44d167-ed15-4bef-bc2e-060ec3369170" alt="Demo Vid" height="300" style="display:inline-block;">
+  <img src="https://github.com/user-attachments/assets/dc22e4c1-613a-411e-92c4-c941496d099b" alt="Demo Vid" height="500" style="display:inline-block; margin-right: 60px;">
+  <img src="https://github.com/user-attachments/assets/5d44d167-ed15-4bef-bc2e-060ec3369170" alt="Demo Vid" height="500" style="display:inline-block;">
 </p>
+
 
 
 ## 🚀 Features
 
 ✅ Easy and fast setup with `init(secretKey , publishkey)`  
-✅ Easily create **Payment Intent**  
+✅ Easily create **Payment Intent**
 ✅ Open **Payment Sheet** to complete the payment  
 ✅ Multi-currency support  
 ✅ Uses **Dio** for API request handling  
-✅ Compatible with the latest versions of **Flutter & Stripe**
-✅ Everything automatically
-✅ Returns Final Result using Either from [dartz](https://pub.dev/packages/dartz):
-✅ Right → Payment Success 🎉
-❌ Left → Payment Failed (Error Message) ⚠️
+✅ Compatible with the latest versions of **Flutter & Stripe**  
+✅ Everything automatically  
+✅ Returns Final Result using Either from [dartz](https://pub.dev/packages/dartz):  
+✅ Right → Payment Success 🎉  **or** ❌ Left → Payment Failed (Error Message) ⚠️
+✅ Supports **Refund Payments**  
 
 ---
 
@@ -81,10 +82,17 @@ For card scanning, add the following to your `Info.plist`:
 ## 📌 Installation
 
 Add the package to `pubspec.yaml`:
+run:
 
+```sh
+flutter pub add easy_stripe_payment
+``` 
+
+
+or :
 ```yaml
 dependencies:
-  easy_stripe_payment: ^3.0.0
+  easy_stripe_payment: ^3.0.6
 ```
 
 Then run:
@@ -92,6 +100,7 @@ Then run:
 ```sh
 flutter pub get
 ```
+
 
 ---
 
@@ -161,6 +170,22 @@ paymentResult.fold(
 ```
 
 📌 **Amount is simple** (50.00 USD = 50.00 USD , 50.00 EUR = 50.00 EUR etc..)
+
+### 🔄 Refund Payment
+
+```dart
+await EasyStripePayment.instance.refundPayment(latestCharge: "your_charge_id").then((value) {
+  value.fold(
+    (fail) {
+      print("Refund failed: $fail");
+    },
+    (success) {
+      print("Refund success");
+    }
+  );
+});
+```
+
 ---
 ## ☕ Support My Work
 
