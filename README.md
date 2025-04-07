@@ -1,10 +1,12 @@
-# 📦 Easy Stripe Payment
+# 💳 EasyStripePayment for Flutter
 
-**Easy Stripe Payment** is a simple Flutter library to handle payments using **Stripe** easily and
-quickly, without complex setup. This library provides a flexible way to create **Payment Intents**
-and present a **Payment Sheet** directly . you just have to active payment method in your stripe
-dashboard from [here](https://dashboard.stripe.com/test/settings/payment_methods) and here you are
-every think will be perfect >>
+A lightweight yet powerful Flutter package that makes **Stripe payments integration a breeze**.  
+It supports full payment flows including **payment intent creation**, **payment sheet UI**, **charge
+verification**, **full & partial refunds**, and **charge detail retrieval** — all with a clean API
+and modern Flutter standards.
+you just have to active payment method in your stripe
+dashboard from [here](https://dashboard.stripe.com/test/settings/payment_methods)
+
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/dc22e4c1-613a-411e-92c4-c941496d099b" alt="Demo Vid" height="500" style="display:inline-block; margin-right: 60px;">
@@ -12,21 +14,45 @@ every think will be perfect >>
 </p>
 
 
+---
+
+## ☕ Support My Work
+
+If you find **Easy Stripe Payment** useful and would like to support my work, consider buying me a
+coffee!
+
+A small cup of coffee might not mean much to you, but for me, it means a lot—it fuels my passion and
+helps me continue building and improving tools for the Flutter community. 🚀
+
+👉 [Buy me a coffee](https://buymeacoffee.com/just4prog)
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/a4c7373d-4f03-4c7c-98de-bce616eae8ed" alt="QR Code" width="200">
+</p>
+
+Your support keeps me motivated to provide more content, updates, and helpful tools. Thank you for being awesome! ❤️
+---
+
+
+---
 
 ## 🚀 Features
 
-✅ Easy and fast setup with `init(secretKey , publishkey)`  
-✅ Easily create **Payment Intent**  
-✅ Open **Payment Sheet** to complete the payment  
-✅ Multi-currency support  
-✅ Uses **Dio** for API request handling  
-✅ Compatible with the latest versions of **Flutter & Stripe**  
-✅ Everything automatically  
-✅ Returns Final Result using Either from [dartz](https://pub.dev/packages/dartz):  
-✅ Right → Payment Success 🎉  **or** ❌ Left → Payment Failed (Error Message) ⚠️  
-✅ Supports **Refund Payments**  
+- ✅ Easy Stripe initialization with publishable key
+- 🧾 Create Payment Intents from backend
+- 🧍 Collect user billing info (email, address, etc.)
+- 💳 Show Stripe Payment Sheet with all payment method
+- ✅ Verify payment status via backend
+- 💸 Full or partial refunds
+- 📄 Retrieve charge details (including receipt URL)
+- 🔒 Secure integration with your backend API
+- 💡 Uses `dartz` for functional error handling
+- 🛠️ State managed with `ChangeNotifier`
 
----
+🧪 Quick Test Mode with EasyStripePaymentTest
+For testing purposes, you can use EasyStripePaymentTest which allows initializing directly with both
+your publishableKey and secretKey (for local test only ⚠️). This skips the need for a backend during
+development:
 
 ## 🔧 Requirements
 
@@ -43,6 +69,8 @@ these steps:
   activity: [Link](https://github.com/Just4prog/easy_stripe_payment/blob/master/example/android/app/src/main/res/values/styles.xml#L15) , [Link](https://github.com/Just4prog/easy_stripe_payment/blob/master/example/android/app/src/main/res/values-night/styles.xml#L15)
 - Use `FlutterFragmentActivity` instead of `FlutterActivity` in
   `MainActivity.kt`: [Link](https://github.com/Just4prog/easy_stripe_payment/blob/master/example/android/app/src/main/kotlin/com/example/example/MainActivity.kt#L3-L7)
+- edit your `gradle.properties` file to be like
+  this : [link](https://github.com/Just4prog/easy_stripe_payment/blob/master/example/android/gradle.properties#L1-L4)
 - Add the following rules to your `proguard-rules.pro`
   file:[link](https://github.com/Just4prog/easy_stripe_payment/blob/master/example/android/app/proguard-rules.pro#L1-L5)
   ```plaintext
@@ -52,8 +80,6 @@ these steps:
   -dontwarn com.stripe.android.pushProvisioning.PushProvisioningActivityStarter
   -dontwarn com.stripe.android.pushProvisioning.PushProvisioningEphemeralKeyProvider
   ```
-- edit your `gradle.properties` file to be like
-  this : [link](https://github.com/Just4prog/easy_stripe_payment/blob/master/example/android/gradle.properties#L1-L4)
 
 ### iOS
 
@@ -88,155 +114,146 @@ run:
 flutter pub add easy_stripe_payment
 ``` 
 
-
 or :
+
 ```yaml
 dependencies:
-  easy_stripe_payment: ^3.0.8
+  easy_stripe_payment: ^4.0.8
 ```
-
-Then run:
-
-```sh
-flutter pub get
-```
-
 
 ---
 
-## ⚙️ Setup
-
-Before using the library, initialize it with your **Stripe Secret Key**:
+## Test Mode :
 
 ```dart
-import 'package:easy_stripe_payment/easy_stripe_payment.dart';
-
-//bring your publishableKey , secretKey
-String publishKey = your_publishable_key;
-String secretKey = your_secret_key;
-
-//in your main function or DI
-//make the main function future by adding async
-
-void main() async {
-  //add these to line before your runApp
-  WidgetsFlutterBinding.ensureInitialized();
-  await EasyStripePayment.instance.init(secretKey: secretKey, publishKey: publishKey);
-
-
-  runApp(const MyApp());
-}
+await EasyStripePaymentTest.instance.init(
+  secretKey: "sk_test_...",
+  publishKey: "pk_test_...",
+);
 ```
-**⚠️⚠️⚠️⚠️**  
-**IMPORTANT NOTE**  
-⚠️ **Security Warning**: ⚠️  
-Do not expose your **Stripe Secret Key** in the frontend,  
-use a **secure server** to fetch it.  
-**⚠️⚠️⚠️⚠️**  
 
+⚠️ Use this only in development — Never expose your secretKey in production apps.
 
 ---
 
-## 💳 Usage
+## 🧪 Quick Start
 
-### 🛒 Execute Payment
+### 1. Initialize Stripe
 
 ```dart
-//you can leave it like this  
-await EasyStripePayment.instance.makePayment(amount : your_amount , currency: your_currency);
-// or use it like in the example 
-await EasyStripePayment.instance.makePayment(amount : your_amount , currency: your_currency).then((value){
-    value.fold(
-    (fail){
-        //TODO: DO SOMETHING
-      print("payment fail $fail");
-    },(success){
-        //TODO: DO SOMETHING
-      print("payment success");
-    }
-  );
-});
+await EasyStripePayment.instance.initStripe(
+  publishKey: "pk_test_...Just4prog.nl...",
+  baseUrl: "https://Just4prog.nl/",
+  merchantName: "Just4prog.nl",
+);
+```
 
-// or consider it like variable
-paymentResult =  await EasyStripePayment.instance.makePayment(amount : your_amount , currency: your_currency);
-paymentResult.fold(
-    (fail){
-          //TODO: DO SOMETHING
-        print("payment fail $fail");
-        },(success){
-          //TODO: DO SOMETHING
-        print("payment success");
-      }
+---
+
+### 2. Start Payment Flow
+
+```dart
+final result = await EasyStripePayment.instance.makePayment(
+  paymentIntentEndpoint: "create-payment-intent/",
+  amount: 99.99,
+  currency: "eur",
+  name: "Ahmed",
+  email: "Ahmed@Just4prog.nl",
+  city: "Amsterdam",
+  country: "NL",
+  postalCode: "1234AB",
+);
+```
+
+---
+
+### 3. Verify Payment
+
+```dart
+final verification = await EasyStripePayment.instance.verifyPayment(
+  statusEndpoint: "verify-payment/",
+  paymentIntentId: result.getOrElse(() => ""),
+);
+```
+
+---
+
+### 4. Get Charge Details
+
+```dart
+final chargeDetails = await EasyStripePayment.instance.getChargeDetails(
+  chargeDetailsEndpoint: "charge-details/",
+  chargeId: "ch_1XYZ...",
+);
+```
+
+---
+
+### 5. Refunds (Full / Partial)
+
+```dart
+// Full refund
+await EasyStripePayment.instance.refundPayment(
+  refundEndpoint: "process-refund/",
+  chargeId: "ch_1XYZ...",
+);
+
+// Partial refund
+await EasyStripePayment.instance.partialRefund(
+  partialRefundEndpoint: "partial-refund/",
+  amount: 50.00,
+  chargeId: "ch_1XYZ...",
+);
+```
+
+---
+
+## 🧠 Architecture Overview
+
+- `EasyStripePayment` is a singleton for global access.
+- Integrates with your backend to handle all sensitive operations.
+- Uses `Dio` for HTTP requests.
+- Uses `Either<Error, Result>` from Dartz to make error handling easy and expressive.
+
+---
+
+## 📦 Backend Required Endpoints
+
+| Endpoint                 | Description                         |
+|--------------------------|-------------------------------------|
+| `/create-payment-intent` | Create a payment intent             |
+| `/verify-payment/:id`    | Verify payment status via intent ID |
+| `/charge-details/:id`    | Retrieve charge details             |
+| `/process-refund/`       | Refund full payment                 |
+| `/partial-refund/`       | Refund partial amount               |
+
+---
+
+## 📸 UI Example (in Flutter)
+
+```dart
+ElevatedButton(
+  onPressed: () async {
+    final result = await EasyStripePayment.instance.makePayment(
+      paymentIntentEndpoint: "create-payment-intent",
+      amount: 49.99,
+      currency: "eur",
+      name: "Ahmed",
+      email: "Ahmed@just4prog.nl",
     );
-
+    result.fold(
+      (error) => print("❌ Payment failed: $error"),
+      (intentId) => print("✅ Success! Intent ID: $intentId"),
+    );
+  },
+  child: const Text("Pay €49.99"),
+);
 ```
 
-📌 **Amount is simple** (50.00 USD = 50.00 USD , 50.00 EUR = 50.00 EUR etc..)
+## ✨ Author
 
-### 🔄 Refund Payment
-## 1- get the payment charge id 
-   Sends a request to the Stripe API to refund a specific charge.  
-   You must send the [latest_charge] which you can find in the response of [makePayment].  
-## Example usage:
- ```dart
-   final response = EasyStripePayment.instance.makePayment(
-     amount: 30,
-     currency: "eur",
-     description: "my description",
-     clientEmail: "ahmed@just4prog.com",
-   );
-  
-   response.fold(
-     (fail) {
-       // TODO: Handle failure
-     },
-     (response) async {
-       // TODO: Handle success
-       String latestCharge = response.data["latest_charge"];
-       // Create your refund
-       await refundPayment(latestCharge: latestCharge);
-     },
-   );
-  
-```
-## 2- make refund :  
-```dart
-await EasyStripePayment.instance.refundPayment(latestCharge: "your_charge_id").then((value) {
-  value.fold(
-    (fail) {
-      print("Refund failed: $fail");
-    },
-    (success) {
-      print("Refund success");
-    }
-  );
-});
-```
-
----
-## ☕ Support My Work
-
-If you find **Easy Stripe Payment** useful and would like to support my work, consider buying me a coffee!
-
-A small cup of coffee might not mean much to you, but for me, it means a lot—it fuels my passion and helps me continue building and improving tools for the Flutter community. 🚀
-
-👉 [Buy me a coffee](https://buymeacoffee.com/just4prog)
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/a4c7373d-4f03-4c7c-98de-bce616eae8ed" alt="QR Code" width="200">
-</p>
-
-Your support keeps me motivated to provide more content, updates, and helpful tools. Thank you for being awesome! ❤️
----
-
-## 📜 License
-
-This library is licensed under the **MIT License**, which means you are free to use and modify it
-under the terms of the license.
-
-📌 **Get started now and provide a smooth payment experience for your users!** 💳🚀
-
----
+Developed with ❤️ by [Ahmed @ Just4Prog](https://just4prog.nl/)  
+Need a custom payment integration? Hit me up!
 
 ## Contact
 
@@ -295,3 +312,5 @@ under the terms of the license.
 ## **Payment Methods by Country**
 
 - **South Korea** - Includes South Korean cards, Naver Pay, Kakao Pay, Samsung Pay, and Payco.
+
+
